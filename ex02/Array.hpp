@@ -6,7 +6,7 @@
 /*   By: misaev <misaev@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 13:12:10 by misaev            #+#    #+#             */
-/*   Updated: 2022/05/21 18:21:17 by misaev           ###   ########.fr       */
+/*   Updated: 2022/05/25 18:04:55 by misaev           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Array
         };
         Array(const Array<T> &p)
         {
-            if(this->tab)
+            if(!this->tab)
                 delete [] this->tab;
             this->tab = new T[p.size];
             for (size_t i = 0; i < p.size; i++)
@@ -36,7 +36,7 @@ class Array
         };
         Array &operator=(const Array<T> &p)
         {
-            if(this->tab)
+            if(!this->tab)
                 delete [] this->tab;
             this->tab = new T[p.size];
             for (size_t i = 0; i < p.size; i++)

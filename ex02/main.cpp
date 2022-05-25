@@ -6,26 +6,59 @@
 /*   By: misaev <misaev@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:06:45 by misaev            #+#    #+#             */
-/*   Updated: 2022/05/21 18:24:18 by misaev           ###   ########.fr       */
+/*   Updated: 2022/05/25 18:05:44 by misaev           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-int main()
+#define MAX_VAL 750
+int main(int, char**)
 {
-    Array<char> tata(10);
-    Array<int> titi(6);
-    Array<int> toto(4);
-    toto = titi;
-    std::cout << tata.ret_size() << std::endl;
-    std::cout << titi.ret_size() << std::endl;
-    std::cout << toto.ret_size() << std::endl;
-    std::cout << &tata << std::endl;
-    std::cout << &titi << std::endl;
-    std::cout << &toto << std::endl;
-    std::cout << tata[1] << std::endl;
-    std::cout << titi[2] << std::endl;
-    std::cout << toto[3] << std::endl;
-    tata[11];
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+    return 0;
 }
