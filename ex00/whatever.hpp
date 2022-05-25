@@ -6,7 +6,7 @@
 /*   By: misaev <misaev@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 11:50:24 by misaev            #+#    #+#             */
-/*   Updated: 2022/05/18 16:00:00 by misaev           ###   ########.fr       */
+/*   Updated: 2022/05/25 20:33:23 by misaev           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ I min(I nbr_a, I nbr_b)
 
 template<typename I>
 
-void swap(I nbr_a, I nbr_b)
+void swap(I &nbr_a, I &nbr_b)
 {
-    I tmp = nbr_a;
+    I tmp_a = nbr_a;
     nbr_a = nbr_b;
-    nbr_b = tmp;
+    nbr_b = tmp_a;
 };
